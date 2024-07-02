@@ -16,6 +16,8 @@
   };
 
   outputs = inputs: inputs.snowfall-lib.mkFlake {
+        devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
+
         inherit inputs;
         src = ./.;
         snowfall = {
